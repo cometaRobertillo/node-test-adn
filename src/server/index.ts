@@ -6,7 +6,9 @@ import mongoose from 'mongoose';
 import Mongo from './config/db';
 import router from './router';
 
+// @ts-ignore
 const _mongo:Mongo = new Mongo(mongoose);
+
 const app:express.Application = express();
 
 app.use(express.json({limit: '1024mb'}));

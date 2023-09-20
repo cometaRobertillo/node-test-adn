@@ -19,7 +19,7 @@ const saveMutation = async(sequence: string[], hasMutation: boolean): Promise<vo
       sequence: JSON.stringify(sequence),
       mutation: hasMutation
     });
-  
+
     await newDna.save();
   } catch(err: any) {
     throw new Error(err);

@@ -3,17 +3,17 @@
 import dao from './dna.dao';
 
 /**
- * 
+ *
  * @returns count_mutations type number, count_no_mutation type number, ratio type number
  */
 const getStats = async(): Promise<{count_mutations: number, count_no_mutation: number, ratio: number}> => {
-  let result = {
+  const result = {
     count_mutations: 0,
     count_no_mutation: 0,
     ratio: 0
   };
 
-  let mutations = await dao.getStats();
+  const mutations = await dao.getStats();
 
   if(!(mutations.length > 0)) {
     return result;
@@ -49,7 +49,7 @@ const checkMutation = async(body: any) => {
   if(isInvalidFormat(dna)){
     throw new Error('Wrong format');
   }
-  
+
   const result = {
     sequence: dna,
     hasMutation: hasMutation(dna)
@@ -66,9 +66,9 @@ const checkMutation = async(body: any) => {
  */
 const isInvalidFormat = (dna: string[]): boolean => {
   let hasError = false;
-  
+
   for(let i = 0; i < dna.length; i++) {
-    if(dna[i].length != 6)
+    if(dna[i].length !== 6)
       break;
 
     if(!/^[acgt]+$/.test(dna[i].toLowerCase())) {
@@ -76,7 +76,7 @@ const isInvalidFormat = (dna: string[]): boolean => {
       break;
     }
   }
-  
+
   return hasError;
 }
 
@@ -88,8 +88,8 @@ const hasMutation = (dna:string[]): boolean => {
 
   let evaluation = false;
 
-  let sumTop = [];
-  let sumHex = [];
+  const sumTop = [];
+  const sumHex = [];
   let sumRight = 0;
   let previousDataSequence: string[] = [];
 
@@ -98,9 +98,9 @@ const hasMutation = (dna:string[]): boolean => {
     sumHex.push(0);
     previousDataSequence.push('');
   }
-  
+
   for(let i = 0; i < dna.length; i++) {
-    
+
     const sequence: string[] = Object.assign([], dna[i].toLowerCase());
     let leftX = '';
 
