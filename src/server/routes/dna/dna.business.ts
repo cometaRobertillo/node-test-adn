@@ -27,7 +27,7 @@ const getStats = async(): Promise<{count_mutations: number, count_no_mutation: n
       result.count_no_mutation++;
   }
 
-  result.ratio = (result.count_mutations / result.count_no_mutation) / 10;
+  result.ratio = parseFloat((result.count_mutations / result.count_no_mutation).toFixed(2));
 
   if(isNaN(result.ratio) || result.ratio === Number.POSITIVE_INFINITY || result.ratio === Number.NEGATIVE_INFINITY)
     result.ratio = 0;
