@@ -68,8 +68,10 @@ const isInvalidFormat = (dna: string[]): boolean => {
   let hasError = false;
 
   for(let i = 0; i < dna.length; i++) {
-    if(dna[i].length !== 6)
+    if(dna[i].length !== 6){
+      hasError = true;
       break;
+    }
 
     if(!/^[acgt]+$/.test(dna[i].toLowerCase())) {
       hasError = true;

@@ -6,7 +6,11 @@ import dna from './dna.model';
  * @returns get every dna record
  */
 const getStats = async(): Promise<{sequence: string, mutation: number}[]> => {
-  return (await dna.find({}));
+  try {
+    return (await dna.find({}));
+  } catch(err: any) {
+    throw new Error(err);
+  }
 }
 
 /**

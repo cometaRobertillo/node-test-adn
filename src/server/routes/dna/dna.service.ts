@@ -16,6 +16,7 @@ const getStats = async(_req: Request, res: Response, next: NextFunction): Promis
     } catch(err) {
         console.log(err);
         res.status(500);
+        res.send();
     }
     next();
 }
@@ -28,6 +29,7 @@ const getStats = async(_req: Request, res: Response, next: NextFunction): Promis
 const checkMutation = async(req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const result = await business.checkMutation(req.body);
+        console.log('result',result)
         if(result.hasMutation) {
             res.status(200);
             res.send();
@@ -38,6 +40,7 @@ const checkMutation = async(req: Request, res: Response, next: NextFunction): Pr
     } catch(err: any) {
         console.log(err);
         res.status(500);
+        res.send();
     }
     next();
 }
